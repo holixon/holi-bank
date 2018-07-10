@@ -1,4 +1,4 @@
-package de.holisticon.bank.holibank
+package de.holisticon.bank
 
 import org.junit.Test
 import org.junit.runner.RunWith

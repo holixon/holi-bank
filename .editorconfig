@@ -19,3 +19,5 @@ indent_size = 2
 # in markdown, we might want trailing whitespaces
 [*.md]
 trim_trailing_whitespace = false
+
+

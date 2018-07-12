@@ -9,10 +9,9 @@ import de.holisticon.bank.domain.BalanceChanged
 import de.holisticon.bank.domain.CurrentBalance
 import org.axonframework.eventhandling.EventHandler
 import org.axonframework.queryhandling.QueryHandler
-import org.springframework.stereotype.Component
-import java.math.BigDecimal
 import org.axonframework.queryhandling.QueryUpdateEmitter
 import org.slf4j.LoggerFactory
+import org.springframework.stereotype.Component
 
 @Component
 class AccountProjection(private val queryUpdateEmitter: QueryUpdateEmitter) {

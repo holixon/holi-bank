@@ -21,6 +21,7 @@
 		<kotlin.version>1.2.51</kotlin.version>
     <axon.version>3.3.1</axon.version>
     <jgiven.version>0.16.0</jgiven.version>
+    <archunit.version>0.8.2</archunit.version>
 	</properties>
 
 	<dependencies>
@@ -79,8 +80,12 @@
       <version>${jgiven.version}</version>
       <scope>test</scope>
     </dependency>
-
-
+    <dependency>
+      <groupId>com.tngtech.archunit</groupId>
+      <artifactId>archunit-junit</artifactId>
+      <version>${archunit.version}</version>
+      <scope>test</scope>
+    </dependency>
 
     <!-- KOTLIN -->
     <dependency>

@@ -16,12 +16,12 @@ to create account with id "1" and initial balance "0"
 
 in Console(2), type:
 
-`http -S  :8080/api/account/1`
+`http -S  :8080/api/accounts/1`
 
 to subscribe to changes on balance of account "1"
 
 then in Console(1) type
 
-`http PUT :8080/api/account/1 id=1 amount=10`
+`http PUT :8080/api/accounts/1 id=1 amount=10`
 
 and check expected output in Console(2).

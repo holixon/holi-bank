@@ -1,9 +1,6 @@
 package de.holisticon.bank
 
-import de.holisticon.bank.domain.CreateAccount
-import de.holisticon.bank.domain.CurrentBalance
-import de.holisticon.bank.domain.Deposit
-import de.holisticon.bank.domain.subscribe
+import de.holisticon.bank.domain.*
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.axonframework.eventsourcing.eventstore.jpa.DomainEventEntry
 import org.axonframework.queryhandling.QueryGateway
@@ -19,6 +16,8 @@ import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.ServerResponse.ok
 import org.springframework.web.reactive.function.server.bodyToServerSentEvents
 import org.springframework.web.reactive.function.server.router
+import reactor.core.publisher.Mono.fromFuture
+import java.net.URI
 
 fun main(args: Array<String>) = runApplication<HoliBankApplication>(*args).let { Unit }
 
@@ -34,8 +33,12 @@ class HoliBankApplication {
         (accept(APPLICATION_JSON)).nest {
           POST("/") { r ->
             r.bodyToMono(CreateAccount::class.java)
-              .doOnNext { cmd -> commandGateway.send<CreateAccount>(cmd) }
-              .then(ServerResponse.ok().build())
+              .flatMap { cmd ->
+                commandGateway.send<CreateAccount>(cmd)
+
+                ServerResponse.created(URI.create("/api/accounts/${cmd.id}")).build()
+              }
+
           }
           /**
            * PUT - deposit money
@@ -44,6 +47,10 @@ class HoliBankApplication {
             r.bodyToMono(Deposit::class.java)
               .doOnNext { cmd -> commandGateway.send<Deposit>(cmd) }
               .then(ServerResponse.ok().build())
+          }
+          GET("/g/{accountId}") { r ->
+            ok()
+              .body(fromFuture(CurrentBalance.Query(r.pathVariable("accountId")).send(queryGateway)), CurrentBalance.Result::class.java)
           }
         }
         /**
@@ -56,6 +63,7 @@ class HoliBankApplication {
             )
           }
         }
+
       }
     "/api/events".nest {
       (accept(APPLICATION_JSON)).nest {
@@ -67,8 +75,8 @@ class HoliBankApplication {
     }
   }
 
-  //@Bean
-  //fun eventSerializer() = JacksonSerializer()
+ // @Bean
+ // fun eventSerializer() = JacksonSerializer()
 }
 
 interface DomainEventRepository : PagingAndSortingRepository<DomainEventEntry, Long>

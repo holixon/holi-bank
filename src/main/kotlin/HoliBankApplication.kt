@@ -1,5 +1,7 @@
 package de.holisticon.bank
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import de.holisticon.bank.domain.*
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.axonframework.eventsourcing.eventstore.jpa.DomainEventEntry
@@ -75,8 +77,12 @@ class HoliBankApplication {
     }
   }
 
- // @Bean
- // fun eventSerializer() = JacksonSerializer()
+  @Bean
+  fun kotlinModule() = KotlinModule()
+
+  @Bean
+  fun eventSerializer(objectMapper: ObjectMapper) = JacksonSerializer(objectMapper)
+
 }
 
 interface DomainEventRepository : PagingAndSortingRepository<DomainEventEntry, Long>

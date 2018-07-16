@@ -20,22 +20,31 @@ tasks.withType<KotlinCompile> {
   }
 }
 
+val test by tasks.getting(Test::class) {
+  useJUnitPlatform()
+}
+
 
 repositories {
   mavenCentral()
 }
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter-webflux")
-	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+  compile("org.springframework.boot:spring-boot-starter-webflux")
+  compile("org.springframework.boot:spring-boot-starter-data-jpa")
   compile("org.axonframework:axon-spring-boot-starter:3.3.1")
   compile("com.h2database:h2")
 
-	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	compile("org.jetbrains.kotlin:kotlin-reflect")
+  compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+  compile("org.jetbrains.kotlin:kotlin-reflect")
   compile("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-  testCompile("org.springframework.boot:spring-boot-starter-test")
+  testCompile("org.springframework.boot:spring-boot-starter-test") {
+    exclude(module = "junit")
+  }
+  testImplementation("org.junit.jupiter:junit-jupiter-api")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
   testCompile("org.axonframework:axon-test:3.3.1")
   testCompile("io.projectreactor:reactor-test")
   testCompile("io.projectreactor:reactor-test")

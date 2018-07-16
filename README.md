@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/holisticon/holi-bank.svg?branch=master)](https://travis-ci.org/holisticon/holi-bank)
+
 # holi-bank
 
 Fictional banking application based on https://github.com/AxonFramework/AxonBank - learing CQRS/ES with axon

@@ -32,7 +32,7 @@ repositories {
 dependencies {
   compile("org.springframework.boot:spring-boot-starter-webflux")
   compile("org.springframework.boot:spring-boot-starter-data-jpa")
-  compile("org.axonframework:axon-spring-boot-starter:3.3.1")
+  compile("org.axonframework:axon-spring-boot-starter:3.3.2")
   compile("com.h2database:h2")
 
   compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -45,12 +45,14 @@ dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter-api")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
-  testCompile("org.axonframework:axon-test:3.3.1")
+  testCompile("org.axonframework:axon-test:3.3.2")
   testCompile("io.projectreactor:reactor-test")
   testCompile("io.projectreactor:reactor-test")
 
   testCompile("com.tngtech.jgiven:jgiven-junit:0.16.0")
   testCompile("com.tngtech.jgiven:jgiven-spring:0.16.0")
   testCompile("com.tngtech.jgiven:jgiven-html5-report:0.16.0")
-  testCompile("com.tngtech.archunit:archunit-junit:0.8.2")
+  testCompile("com.tngtech.archunit:archunit-junit:0.8.2") {
+    exclude(module = "junit")
+  }
 }

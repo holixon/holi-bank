@@ -6,8 +6,11 @@ plugins {
   id("org.jetbrains.kotlin.jvm") version kotlinVersion
   id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
   id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
+  id("org.jetbrains.kotlin.kapt") version kotlinVersion
+
   id("io.spring.dependency-management") version "1.0.5.RELEASE"
   idea
+
 }
 
 group = "de.holisticon.bank"
@@ -39,9 +42,10 @@ dependencies {
   compile("org.jetbrains.kotlin:kotlin-reflect")
   compile("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-  testCompile("org.springframework.boot:spring-boot-starter-test") {
-    exclude(module = "junit")
-  }
+  testCompile("org.springframework.boot:spring-boot-starter-test")
+//  {
+//    exclude(module = "junit")
+//  }
   testImplementation("org.junit.jupiter:junit-jupiter-api")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
@@ -52,7 +56,8 @@ dependencies {
   testCompile("com.tngtech.jgiven:jgiven-junit:0.16.0")
   testCompile("com.tngtech.jgiven:jgiven-spring:0.16.0")
   testCompile("com.tngtech.jgiven:jgiven-html5-report:0.16.0")
-  testCompile("com.tngtech.archunit:archunit-junit:0.8.2") {
-    exclude(module = "junit")
-  }
+  testCompile("com.tngtech.archunit:archunit-junit:0.8.2")
+//  {
+//    exclude(module = "junit")
+//  }
 }

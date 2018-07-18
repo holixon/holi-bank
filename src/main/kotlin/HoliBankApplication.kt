@@ -10,6 +10,7 @@ import org.axonframework.serialization.json.JacksonSerializer
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
+import org.springframework.context.support.beans
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.http.MediaType.TEXT_EVENT_STREAM
@@ -21,7 +22,15 @@ import org.springframework.web.reactive.function.server.router
 import reactor.core.publisher.Mono.fromFuture
 import java.net.URI
 
-fun main(args: Array<String>) = runApplication<HoliBankApplication>(*args).let { Unit }
+fun main(args: Array<String>) = runApplication<HoliBankApplication>(*args){
+  addInitializers(
+    beans {
+      bean {
+        KotlinModule()
+      }
+    }
+  )
+}.let { Unit }
 
 @SpringBootApplication
 class HoliBankApplication {
@@ -40,7 +49,6 @@ class HoliBankApplication {
 
                 ServerResponse.created(URI.create("/api/accounts/${cmd.id}")).build()
               }
-
           }
           /**
            * PUT - deposit money
@@ -76,9 +84,6 @@ class HoliBankApplication {
       }
     }
   }
-
-  @Bean
-  fun kotlinModule() = KotlinModule()
 
   @Bean
   fun eventSerializer(objectMapper: ObjectMapper) = JacksonSerializer(objectMapper)

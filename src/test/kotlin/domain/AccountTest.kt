@@ -1,8 +1,7 @@
 package de.holisticon.bank.domain
 
 import org.axonframework.test.aggregate.AggregateTestFixture
-import org.junit.Test
-import java.math.BigDecimal
+import org.junit.jupiter.api.Test
 
 class AccountTest {
 

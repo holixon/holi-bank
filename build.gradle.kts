@@ -10,7 +10,6 @@ plugins {
 
   id("io.spring.dependency-management") version "1.0.5.RELEASE"
   idea
-
 }
 
 group = "de.holisticon.bank"
@@ -30,6 +29,7 @@ val test by tasks.getting(Test::class) {
 
 repositories {
   mavenCentral()
+  maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
 
 dependencies {
@@ -42,10 +42,9 @@ dependencies {
   compile("org.jetbrains.kotlin:kotlin-reflect")
   compile("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-  testCompile("org.springframework.boot:spring-boot-starter-test")
-//  {
-//    exclude(module = "junit")
-//  }
+  testCompile("org.springframework.boot:spring-boot-starter-test") {
+    exclude(module = "junit")
+  }
   testImplementation("org.junit.jupiter:junit-jupiter-api")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
@@ -56,8 +55,8 @@ dependencies {
   testCompile("com.tngtech.jgiven:jgiven-junit:0.16.0")
   testCompile("com.tngtech.jgiven:jgiven-spring:0.16.0")
   testCompile("com.tngtech.jgiven:jgiven-html5-report:0.16.0")
-  testCompile("com.tngtech.archunit:archunit-junit:0.8.2")
-//  {
-//    exclude(module = "junit")
-//  }
+
+  testCompile("com.tngtech.archunit:archunit-junit5-api:0.9.0-junit5-SNAPSHOT")
+  testRuntime("com.tngtech.archunit:archunit-junit5-engine:0.9.0-junit5-SNAPSHOT")
+
 }

@@ -4,23 +4,19 @@ import de.holisticon.bank.domain.CreateAccount
 import de.holisticon.bank.domain.CurrentBalance
 import de.holisticon.bank.domain.Deposit
 import org.assertj.core.api.Assertions
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
-import org.springframework.test.context.junit4.SpringRunner
+import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.reactive.function.BodyInserters.fromObject
-import reactor.core.publisher.toMono
 import java.util.*
 
-@RunWith(SpringRunner::class)
+@ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-class HoliBankApplicationTests {
-
-  @Autowired
-  private lateinit var webClient: WebTestClient
+class HoliBankApplicationTests(@Autowired private val webClient: WebTestClient) {
 
   private val id = UUID.randomUUID().toString()
 

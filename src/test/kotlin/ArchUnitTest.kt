@@ -3,10 +3,8 @@ package de.holisticon.bank
 
 import com.tngtech.archunit.junit.AnalyzeClasses
 import com.tngtech.archunit.junit.ArchTest
-import com.tngtech.archunit.junit.ArchUnitRunner
 import com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes
 import org.axonframework.spring.stereotype.Aggregate
-import org.junit.runner.RunWith
 
 /**
  * Architectural tests with [archUnit](https://www.archunit.org/userguide/html/000_Index.html).
@@ -14,7 +12,6 @@ import org.junit.runner.RunWith
  * Work in progress, still finding out if this is useful.
  *
  */
-@RunWith(ArchUnitRunner::class)
 @AnalyzeClasses(packages = ["de.holisticon.bank"])
 class ArchUnitTest {
 

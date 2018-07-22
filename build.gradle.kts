@@ -1,18 +1,16 @@
+import de.holisticon.bank.build.Versions
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-
-    val kotlinVersion = "1.2.51"
-    val springBootVersion = "2.0.3.RELEASE"
 
     base
     application
     idea
 
-    kotlin("jvm") version kotlinVersion
-    id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
+    kotlin("jvm") version Versions.kotlin
+    id("org.jetbrains.kotlin.plugin.spring") version Versions.kotlin
 
-    id("org.springframework.boot") version springBootVersion
+    id("org.springframework.boot") version Versions.springBootVersion
 
     //id("org.springframework.boot")
     //id("io.spring.dependency-management")

@@ -8,7 +8,23 @@ import org.springframework.boot.runApplication
 class DemoApplication() : CommandLineRunner {
 
     override fun run(vararg args: String?) {
-        print("Hello World!")
+
+        print("""
+            ---
+
+
+
+
+
+            Hello World!
+
+
+
+
+
+
+            ---
+            """.trimIndent())
     }
 
 }

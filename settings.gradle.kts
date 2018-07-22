@@ -1,1 +1,0 @@
-rootProject.name = "holi-bank"

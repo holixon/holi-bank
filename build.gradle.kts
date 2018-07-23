@@ -1,35 +1,22 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
-
+// define plugins base+idea
 plugins {
     base
     idea
-
-    kotlin("jvm") version Versions.kotlin
-    kotlin ("plugin.spring") version Versions.kotlin
-    id("org.springframework.boot") version Versions.springBoot
-    id("io.spring.dependency-management") version Versions.springBootDependencyManagement
 }
 
-
-group = "de.holisticon.bank"
-version = "1.0.0-SNAPSHOT"
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs = listOf("-Xjsr305=strict")
+// set gav for project and repos
+allprojects {
+    group = "de.holisticon.bank"
+    version = "1.0.0-SNAPSHOT"
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
     }
 }
 
-
 dependencies {
-    compile(kotlin("stdlib"))
-
-    compile("org.springframework.boot:spring-boot-starter")
-
-}
-
-repositories {
-    jcenter()
+    subprojects.forEach {
+        archives(it)
+    }
 }

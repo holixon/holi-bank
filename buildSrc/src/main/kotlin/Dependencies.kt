@@ -3,8 +3,8 @@ import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
 object Versions {
-  val kotlin = "1.2.51"
-  val springBoot = "2.0.3.RELEASE"
+  val kotlin = "1.2.60"
+  val springBoot = "2.0.4.RELEASE"
   val springBootDependencyManagement = "1.0.6.RELEASE"
 }
 

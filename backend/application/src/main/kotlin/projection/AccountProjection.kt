@@ -35,12 +35,12 @@ class AccountProjection(private val queryUpdateEmitter: QueryUpdateEmitter) {
   }
 
   @QueryHandler
-  fun query(query: CurrentBalance.Query): CurrentBalance.Result {
+  fun query(query: CurrentBalance.Query): CurrentBalance.Result =
     if (accounts.containsKey(query.id))
-      return CurrentBalance.Result(query.id, accounts.get(query.id)!!)
+      CurrentBalance.Result(query.id, accounts.get(query.id)!!)
     else
       throw AccountNotExistent(query.id)
-  }
+
 
   private fun updateQuery(accountId: String) {
     queryUpdateEmitter.emit(

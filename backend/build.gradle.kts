@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
 plugins {
-  kotlin("jvm") version Versions.kotlin
+  kotlin("jvm") version "1.2.71" //Versions.kotlin
 }
 
 

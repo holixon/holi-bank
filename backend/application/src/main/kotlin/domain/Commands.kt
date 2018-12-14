@@ -1,8 +1,7 @@
 package de.holisticon.bank.domain
 
 import de.holisticon.bank.AccountId
-import org.axonframework.commandhandling.TargetAggregateIdentifier
-import java.math.BigDecimal
+import org.axonframework.modelling.command.TargetAggregateIdentifier
 
 sealed class Command(@TargetAggregateIdentifier open val id:AccountId)
 

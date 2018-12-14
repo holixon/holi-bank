@@ -16,13 +16,12 @@ import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.http.MediaType.TEXT_EVENT_STREAM
 import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.server.ServerResponse
-import org.springframework.web.reactive.function.server.ServerResponse.ok
 import org.springframework.web.reactive.function.server.bodyToServerSentEvents
 import org.springframework.web.reactive.function.server.router
 import reactor.core.publisher.Mono.fromFuture
 import java.net.URI
 
-fun main(args: Array<String>) = runApplication<HoliBankApplication>(*args){
+fun main(args: Array<String>) = runApplication<HoliBankApplication>(*args) {
   addInitializers(
     beans {
       bean {
@@ -86,7 +85,9 @@ class HoliBankApplication {
   }
 
   @Bean
-  fun eventSerializer(objectMapper: ObjectMapper) = JacksonSerializer(objectMapper)
+  fun eventSerializer(objectMapper: ObjectMapper) = JacksonSerializer.builder()
+    .objectMapper(objectMapper)
+    .build()
 
 }
 

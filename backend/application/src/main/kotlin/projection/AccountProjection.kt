@@ -2,11 +2,7 @@
 
 package de.holisticon.bank.projection
 
-import de.holisticon.bank.AccountId
-import de.holisticon.bank.domain.AccountCreated
-import de.holisticon.bank.domain.AccountNotExistent
-import de.holisticon.bank.domain.BalanceChanged
-import de.holisticon.bank.domain.CurrentBalance
+import de.holisticon.bank.domain.*
 import org.axonframework.eventhandling.EventHandler
 import org.axonframework.queryhandling.QueryHandler
 import org.axonframework.queryhandling.QueryUpdateEmitter
@@ -42,7 +38,7 @@ class AccountProjection(private val queryUpdateEmitter: QueryUpdateEmitter) {
       throw AccountNotExistent(query.id)
 
 
-  private fun updateQuery(accountId: String) {
+  private fun updateQuery(accountId: AccountId) {
     queryUpdateEmitter.emit(
       CurrentBalance.Query::class.java,
       { query -> query.id.equals(accountId) },

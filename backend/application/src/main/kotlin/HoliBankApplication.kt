@@ -59,7 +59,7 @@ class HoliBankApplication {
           }
           GET("/g/{accountId}") { r ->
             ok()
-              .body(fromFuture(CurrentBalance.Query(r.pathVariable("accountId")).send(queryGateway)), CurrentBalance.Result::class.java)
+              .body(fromFuture(CurrentBalance.Query(AccountId(r.pathVariable("accountId"))).send(queryGateway)), CurrentBalance.Result::class.java)
           }
         }
         /**
@@ -68,7 +68,7 @@ class HoliBankApplication {
         (accept(TEXT_EVENT_STREAM)).nest {
           GET("/{accountId}") { r ->
             ok().bodyToServerSentEvents(
-              CurrentBalance.Query(r.pathVariable("accountId")).subscribe(queryGateway)
+              CurrentBalance.Query(AccountId(r.pathVariable("accountId"))).subscribe(queryGateway)
             )
           }
         }
@@ -92,5 +92,3 @@ class HoliBankApplication {
 }
 
 interface DomainEventRepository : PagingAndSortingRepository<DomainEventEntry, Long>
-
-typealias AccountId = String

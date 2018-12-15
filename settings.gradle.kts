@@ -3,3 +3,4 @@ rootProject.buildFileName="build.gradle.kts"
 
 include("backend")
 include("backend:application")
+include("backend:domain")

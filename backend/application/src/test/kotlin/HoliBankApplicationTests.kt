@@ -1,5 +1,6 @@
 package de.holisticon.bank
 
+import de.holisticon.bank.domain.AccountId
 import de.holisticon.bank.domain.CreateAccount
 import de.holisticon.bank.domain.CurrentBalance
 import de.holisticon.bank.domain.Deposit
@@ -23,7 +24,7 @@ class HoliBankApplicationTests(@Autowired private val webClient: WebTestClient) 
   @Test
   fun `create account`() {
     webClient.post().uri("/api/accounts")
-      .body(fromObject(CreateAccount(id)))
+      .body(fromObject(CreateAccount(AccountId(id))))
       .exchange()
       .expectStatus().isCreated
       .expectHeader().valueEquals("Location", "/api/accounts/$id")
@@ -32,11 +33,11 @@ class HoliBankApplicationTests(@Autowired private val webClient: WebTestClient) 
   @Test
   fun `can deposit money`() {
     webClient.post().uri("/api/accounts")
-      .body(fromObject(CreateAccount(id)))
+      .body(fromObject(CreateAccount(AccountId(id))))
       .exchange()
 
     webClient.put().uri("/api/accounts/$id")
-      .body(fromObject(Deposit(id, 100)))
+      .body(fromObject(Deposit(AccountId(id), 100)))
       .exchange()
 
 

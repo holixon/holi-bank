@@ -2,7 +2,6 @@
 
 package de.holisticon.bank.domain
 
-import de.holisticon.bank.AccountId
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
@@ -19,7 +18,7 @@ class Account {
   }
 
   @AggregateIdentifier
-  private lateinit var id: AccountId
+  private var id: AccountId? = null
   private var balance: Int = 0
 
   @CommandHandler

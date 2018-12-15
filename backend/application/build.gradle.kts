@@ -5,6 +5,8 @@ plugins {
 }
 
 dependencies {
+  compile(project(":backend:domain"))
+
   compile("org.springframework.boot:spring-boot-starter-webflux")
   compile("org.springframework.boot:spring-boot-starter-data-jpa")
   compile(Dependencies.axon("spring-boot-starter")) {
@@ -16,6 +18,23 @@ dependencies {
 
 
 
+// TODO: centralize junit/spring test config
+  testCompile("org.springframework.boot:spring-boot-starter-test") {
+    exclude(module = "junit")
+  }
+  testImplementation(Dependencies.jupiter("api"))
+  testRuntimeOnly(Dependencies.jupiter("engine"))
+
+  testCompile(Dependencies.axon("test"))
+  testCompile("io.projectreactor:reactor-test")
+
+  testCompile(Dependencies.jgiven("junit"))
+  testCompile(Dependencies.jgiven("spring"))
+  testCompile(Dependencies.jgiven("html5-report"))
+
+  testCompile(Dependencies.archunit("junit5-api"))
+  testCompile(Dependencies.archunit("junit5-engine"))
+
 }
 
 
@@ -24,8 +43,5 @@ repositories {
 }
 
 
-val test by tasks.getting(Test::class) {
-  useJUnitPlatform()
-}
 
 

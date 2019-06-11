@@ -5,14 +5,14 @@ import org.gradle.plugin.use.PluginDependencySpec
 
 object Versions {
   val kotlin = embeddedKotlinVersion
-  val springBoot = "2.1.1.RELEASE"
-  val axon = "4.0.3"
+  val springBoot = "2.1.5.RELEASE"
+  val axon = "4.1.1"
 
   @Deprecated("with gradle 5 we do not need the plugin")
   val springBootDependencyManagement = "1.0.6.RELEASE"
 
   object Test {
     val jgiven = "0.17.0"
-    val archunit = "0.9.3"
+    val archunit = "0.10.2"
   }
 }

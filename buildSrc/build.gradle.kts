@@ -4,12 +4,18 @@ plugins {
   `kotlin-dsl`
 }
 
-repositories {
-  mavenLocal()
-  jcenter()
+apply {
+  from("../gradle/repositories.gradle.kts")
 }
 
+kotlinDslPluginOptions {
+  experimentalWarning.set(false)
+}
+
+
+// TODO: does this work here?
 allprojects {
+
   tasks.withType<KotlinCompile> {
     kotlinOptions {
       jvmTarget = "1.8"

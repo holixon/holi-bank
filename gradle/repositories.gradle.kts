@@ -6,4 +6,5 @@ repositories {
   // if not found, search on jcenter
   jcenter()
 
+  maven(url = "https://kotlin.bintray.com/kotlinx/")
 }

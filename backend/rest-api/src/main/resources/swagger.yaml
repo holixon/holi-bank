@@ -1,0 +1,51 @@
+swagger: "2.0"
+info:
+  description: "Rest API for HoliBank Application"
+  version: "0.1.0-SNAPSHOT"
+  title: "HoliBank API"
+host: "localhost:8080"
+schemes:
+  - http
+paths:
+  /api/accounts:
+    get:
+      summary: Gets all accounts
+      description: ""
+      operationId: "getAccounts"
+      consumes:
+        - "*/*"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AccountInfoDto"
+          description: "List of all accounts"
+
+definitions:
+  AccountInfoDto:
+    type: object
+    required:
+      - id
+      - balance
+    properties:
+      id:
+        type: string
+        example:
+          "12345"
+      balance:
+        type: number
+        example:
+          "500"
+  CreateAccountDto:
+    type: object
+    required:
+      - id
+      - balance
+    properties:
+      id:
+        type: string
+      balance:
+        type: number

@@ -1,0 +1,30 @@
+site:
+  about:
+    siteName: Holi Bank Application
+    siteDescription: A simple banking application using axon and spring boot
+BsDoc:
+  primaryColor: '#DE9149'
+  social:
+    github: 'holisticon/holi-bank'
+    twitter: 'holisticon'
+  menu:
+    - type: 'wiki'
+    - type: 'page'
+      itemId: 'Changelog'
+    - type: 'kotlindocPackages'
+    - type: 'kotlindocClasses'
+
+
+kotlindoc:
+  sourceDirs:
+    - './../../../../application/src/main/kotlin'
+    - './../../../../backend/aggregate/src/main/kotlin'
+    - './../../../../backend/projection/src/main/kotlin'
+    - './../../../../backend/core-api/src/main/kotlin'
+    - './../../../../backend/rest-api/build/swagger/src/main/kotlin'
+  pages:
+    extraCss:
+      - 'assets/css/orchidKotlindoc.scss'
+    menu:
+      - type: "kotlindocClassLinks"
+        includeItems: true

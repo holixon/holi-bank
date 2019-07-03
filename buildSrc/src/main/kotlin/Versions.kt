@@ -1,18 +1,17 @@
 import org.gradle.kotlin.dsl.embeddedKotlinVersion
-import org.gradle.kotlin.dsl.version
-import org.gradle.plugin.use.PluginDependenciesSpec
-import org.gradle.plugin.use.PluginDependencySpec
 
 object Versions {
-  val kotlin = embeddedKotlinVersion
-  val springBoot = "2.1.5.RELEASE"
   val axon = "4.1.1"
+  val kotlin = embeddedKotlinVersion
+  val logback = "1.2.3"
+  val orchid = "0.17.0" // TODO update 0.17.1
+  val springBoot = "2.1.5.RELEASE"
+  val graphql = "5.0.2"
 
-  @Deprecated("with gradle 5 we do not need the plugin")
-  val springBootDependencyManagement = "1.0.6.RELEASE"
 
   object Test {
-    val jgiven = "0.17.0"
+    val junit5 = "5.4.2"
+    val jgiven = "0.17.1"
     val archunit = "0.10.2"
   }
 }

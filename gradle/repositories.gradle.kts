@@ -8,5 +8,5 @@ repositories {
 
   maven(url = "https://repo.spring.io/milestone")
   maven(url = "https://kotlin.bintray.com/kotlinx/")
-  maven("https://jitpack.io")
+  maven(url = "https://jitpack.io")
 }

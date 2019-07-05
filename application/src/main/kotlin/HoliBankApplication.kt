@@ -13,6 +13,7 @@ fun main() = application(WebApplicationType.SERVLET) {
   beans {
     bean<SampleService>()
     bean<SampleHandler>()
+    configurationProperties<Properties>("holi-bank")
   }
   webMvc {
     port = if (profiles.contains("test")) 8181 else 8080
@@ -32,8 +33,12 @@ fun main() = application(WebApplicationType.SERVLET) {
 
 data class Sample(val message: String)
 
-class SampleService {
-  fun generateMessage() = "Hello world!"
+data class Properties(
+  val name:String
+)
+
+class SampleService(val props: Properties) {
+  fun generateMessage() = "Hello ${props.name}!"
 }
 
 @Suppress("UNUSED_PARAMETER")

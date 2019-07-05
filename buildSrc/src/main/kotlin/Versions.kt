@@ -2,7 +2,7 @@ import org.gradle.kotlin.dsl.embeddedKotlinVersion
 
 object Versions {
   val kotlin = embeddedKotlinVersion
-  val springBoot = "2.2.0.M3" // TODO update 2.2.0.M4
+  val springBoot = "2.2.0.M4"
   val springFu = "0.1"
 
 

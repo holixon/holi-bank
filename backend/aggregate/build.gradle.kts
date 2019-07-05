@@ -1,11 +1,17 @@
 import _buildsrc.junit5
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+  kotlin("jvm")
   id("com.tngtech.jgiven.gradle-plugin") version Versions.Test.jgiven
   id("org.jetbrains.kotlin.plugin.allopen") version Versions.kotlin
 }
 
 dependencies {
+  implementation(kotlin("stdlib-jdk8"))
+  implementation(kotlin("reflect"))
+
+
   implementation(project(":backend:core-api"))
   implementation("org.axonframework:axon-configuration:${Versions.axon}")
   implementation("org.axonframework:axon-messaging:${Versions.axon}")
@@ -27,8 +33,19 @@ tasks {
     useJUnitPlatform()
     finalizedBy("jgivenTestReport")
   }
+
+    withType<KotlinCompile> {
+      kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = listOf(
+          "-XXLanguage:+InlineClasses",
+          "-Xjsr305=strict"
+        )
+      }
+    }
+
 }
 
-allOpen {
-  annotation("de.holisticon.ranked.backend.JGivenStage")
-}
+//allOpen {
+//  annotation("de.holisticon.ranked.backend.JGivenStage")
+//}

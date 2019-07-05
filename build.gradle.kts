@@ -2,6 +2,8 @@
 plugins {
   base
   idea
+
+  kotlin("jvm") version Versions.kotlin apply false
 }
 
 allprojects {

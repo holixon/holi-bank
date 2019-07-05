@@ -5,9 +5,12 @@ rootProject.buildFileName = "build.gradle.kts"
 
 include("application")
 
-//include("backend")
+include(
+//  "backend",
 
-//include("backend:core-api")
+  "backend:core-api",
+  "backend:aggregate"
+)
 
 //include(
 //  "backend:rest-api",

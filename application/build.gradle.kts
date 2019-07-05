@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version Versions.kotlin
+  kotlin("jvm")
   id("org.springframework.boot") version Versions.springBoot
 }
 

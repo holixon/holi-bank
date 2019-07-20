@@ -6,9 +6,9 @@ import de.holisticon.holibank.backend.core.api.AccountEvent.AccountCreated
 import de.holisticon.holibank.backend.core.api.AccountEvent.BalanceChanged
 import de.holisticon.holibank.backend.core.api.AccountId
 import io.toolisticon.addons.axon.jgiven.AggregateFixtureScenarioTest
-import io.toolisticon.addons.axon.jgiven.GIVEN
-import io.toolisticon.addons.axon.jgiven.THEN
-import io.toolisticon.addons.axon.jgiven.WHEN
+import io.toolisticon.addons.jgiven.GIVEN
+import io.toolisticon.addons.jgiven.THEN
+import io.toolisticon.addons.jgiven.WHEN
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.Test
 

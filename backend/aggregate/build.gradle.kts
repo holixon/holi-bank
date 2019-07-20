@@ -16,8 +16,7 @@ dependencies {
   implementation("org.axonframework:axon-configuration:${Versions.axon}")
   implementation("org.axonframework:axon-messaging:${Versions.axon}")
 
-  testImplementation("org.axonframework:axon-test:${Versions.axon}")
-  testImplementation(files("${rootProject.rootDir}/libs/axon-jgiven-0.1.0-SNAPSHOT.jar")) // TODO: use from repo when published
+  testImplementation("io.toolisticon.addons.axon:axon-jgiven:0.1.0")
 
   testImplementation("com.tngtech.jgiven:jgiven-junit5:${Versions.Test.jgiven}")
   testImplementation("org.assertj:assertj-core:3.12.2")

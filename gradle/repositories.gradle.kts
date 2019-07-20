@@ -7,6 +7,5 @@ repositories {
   jcenter()
 
   maven(url = "https://repo.spring.io/milestone")
-  maven(url = "https://kotlin.bintray.com/kotlinx/")
-  maven(url = "https://jitpack.io")
+ // maven(url = "https://kotlin.bintray.com/kotlinx/")
 }

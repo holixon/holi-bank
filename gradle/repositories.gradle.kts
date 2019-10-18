@@ -2,6 +2,7 @@ repositories {
 
   // prefer artifacts from local cache
   mavenLocal()
+  mavenCentral()
 
   // if not found, search on jcenter
   jcenter()

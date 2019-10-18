@@ -13,7 +13,7 @@ fun main() = application(WebApplicationType.SERVLET) {
   beans {
     bean<SampleService>()
     bean<SampleHandler>()
-    configurationProperties<Properties>("holi-bank")
+    configurationProperties<HoliBankProperties>(prefix= "holi-bank")
   }
   webMvc {
     port = if (profiles.contains("test")) 8181 else 8080
@@ -33,11 +33,11 @@ fun main() = application(WebApplicationType.SERVLET) {
 
 data class Sample(val message: String)
 
-data class Properties(
+data class HoliBankProperties(
   val name:String
 )
 
-class SampleService(val props: Properties) {
+class SampleService(val props: HoliBankProperties) {
   fun generateMessage() = "Hello ${props.name}!"
 }
 

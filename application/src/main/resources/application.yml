@@ -1,2 +1,7 @@
+spring:
+  application:
+    name: holi-bank
+
 holi-bank:
   name: "Jan"
+

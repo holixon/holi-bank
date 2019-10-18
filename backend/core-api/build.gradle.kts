@@ -6,6 +6,8 @@ plugins {
 
 dependencies {
   api("org.axonframework:axon-modelling:${Versions.axon}")
+
+  implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks {
